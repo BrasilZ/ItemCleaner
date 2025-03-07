@@ -13,13 +13,13 @@ namespace ItemCleaner
     public class ItemCleanerPlugin : TerrariaPlugin
     {
         private System.Timers.Timer? cleanTimer;
-        private string langFilePath = Path.Combine(TShock.SavePath, "itemcleaner_lang.json");
+        private string langFilePath = Path.Combine(TShock.SavePath, "Lixeiro.json");
         private Dictionary<string, string> lang = new();
 
         public override string Name => "Item Cleaner";
         public override string Author => "brasilzinhoz";
         public override string Description => "Limpa itens dropados no chão automaticamente.";
-        public override Version Version => new Version(1, 0, 0, 0);
+        public override Version Version => new Version(0, 0, 0, 1);
 
         public ItemCleanerPlugin(Main game) : base(game)
         {
@@ -28,7 +28,7 @@ namespace ItemCleaner
         public override void Initialize()
         {
             LoadLanguage();
-            cleanTimer = new System.Timers.Timer(30 * 60 * 1000); // 30 minutos
+            cleanTimer = new System.Timers.Timer(30 * 60 * 1000); // 30 m
             cleanTimer.Elapsed += OnCleanTimerElapsed;
             cleanTimer.AutoReset = true;
             cleanTimer.Start();
